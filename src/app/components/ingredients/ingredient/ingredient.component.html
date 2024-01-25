@@ -1,0 +1,18 @@
+<br><br><br><br>
+<div class="ingredient-container" *ngIf="ingredients.length > 0; else noData">
+  <table class="ingredient-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingredient of ingredients">
+        <td>{{ ingredient.name }}</td>
+        <td>{{ ingredient.quantity }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noData><div class="loading">Están cargando los datos...</div></ng-template>

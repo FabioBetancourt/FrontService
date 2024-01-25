@@ -1,0 +1,19 @@
+<div class="purchase-container" *ngIf="purchases.length > 0; else noData">
+  <table class="purchase-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad Comprada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let purchase of purchases | paginate: { itemsPerPage: count, currentPage: page }">
+        <td>{{ purchase.ingredient.name }}</td>
+        <td>{{ purchase.quantity }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+<ng-template #noData><div class="loading">Están cargando los datos...</div></ng-template>

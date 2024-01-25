@@ -1,0 +1,25 @@
+<div *ngIf="orders.length > 0; else noData" class="orders-container">
+  <table class="orders-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Recipe ID</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders | paginate: { itemsPerPage: count, currentPage: page }">
+        <td>{{ order.id }}</td>
+        <td>{{ order.recipe_id }}</td>
+        <td>{{ order.created_at | date: 'medium' }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+  <br>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+</div>
+<ng-template #noData>
+  <div class="no-data-message">Los datos estan cargando...</div>
+</ng-template>

@@ -1,0 +1,32 @@
+.ingredient-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.ingredient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.ingredient-table thead {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.ingredient-table th,
+.ingredient-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ingredient-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+}
