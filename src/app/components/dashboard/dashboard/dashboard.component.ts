@@ -52,14 +52,15 @@ export class DashboardComponent {
       }
     });
   }
-
-  ngOnDestroy() {
-    this.stopPolling();
-  }
-
   private stopPolling() {
     if (this.pollingSubscription) {
       this.pollingSubscription.unsubscribe();
     }
   }
+
+  ngOnDestroy() {
+    this.pollingSubscription?.unsubscribe();
+  }
+
+
 }

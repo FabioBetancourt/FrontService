@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Recipe } from 'src/models/recipe.model';
 
@@ -9,12 +10,18 @@ import { Recipe } from 'src/models/recipe.model';
 })
 export class RecipeComponent {
   recipes: Recipe[] = [];
+  private subscription: Subscription | undefined;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.recipeService.getRecipes().subscribe(data => {
+    this.subscription = this.recipeService.getRecipes().subscribe(data => {
       this.recipes = data.recipes;
     });
   }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
+  }
+
 }
